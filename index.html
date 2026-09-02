@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santhosh Kumar T | Software Developer</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* ==========================================================================
+       DARK THEME & HIGH-CONTRAST VISIBILITY SYSTEM
+       ========================================================================== */
+    :root {
+      --bg-dark: #0b0f17;
+      --bg-card: rgba(18, 24, 38, 0.90);
+      --bg-card-hover: rgba(26, 35, 54, 0.95);
+      --border-color: rgba(226, 232, 240, 0.2);
+      --border-accent: rgba(16, 185, 129, 0.5);
+      --accent-green: #10b981;
+      --accent-green-glow: rgba(16, 185, 129, 0.35);
+      
+      /* High visibility text colors */
+      --text-heading: #ffffff;
+      --text-body: #f8fafc;
+      --text-sub: #e2e8f0;
+      --text-muted-custom: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-body);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Glow Effects */
+    .bg-glow-top {
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
+      filter: blur(100px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-glow-center {
+      position: absolute;
+      top: 45%;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+      filter: blur(120px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .text-muted, .text-muted-custom {
+      color: var(--text-sub) !important;
+    }
+
+    /* ==========================================================================
+       NAVBAR STYLING
+       ========================================================================== */
+    .navbar-glass {
+      background: rgba(11, 15, 23, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      color: var(--text-sub) !important;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 6px 14px !important;
+      border-radius: 20px;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff !important;
+      background: rgba(16, 185, 129, 0.2);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+
+    /* ==========================================================================
+       HERO & SCOPE SCANNER STYLING
+       ========================================================================== */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #34d399;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-green);
+      animation: pulseDot 1.5s infinite alternate;
+    }
+
+    @keyframes pulseDot {
+      0% { opacity: 0.4; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .hero-title {
+      color: var(--text-heading);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .text-green-accent {
+      color: #34d399;
+      text-shadow: 0 0 12px var(--accent-green-glow);
+    }
+
+    .scope-frame {
+      position: relative;
+      width: 290px;
+      height: 290px;
+      border-radius: 50%;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.3);
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scope-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #334155 0%, #64748b 25%, #1e293b 45%, #94a3b8 50%, #334155 70%, #0f172a 85%, #334155 100%
+      );
+      z-index: 0;
+      animation: rotateBezel 12s linear infinite;
+    }
+
+    @keyframes rotateBezel {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .scope-frame::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: #0f172a;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);
+      z-index: 1;
+    }
+
+    .scope-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 2;
+      background: #06110d;
+      border: 2px solid var(--accent-green);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 20px var(--accent-green-glow);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.95;
+      animation: revealImg 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes revealImg {
+      0% { clip-path: inset(0 0 100% 0); }
+      100% { clip-path: inset(0 0 0 0); }
+    }
+
+    .scan-line {
+      position: absolute;
+      left: 0; right: 0;
+      height: 3px;
+      background: var(--accent-green);
+      box-shadow: 0 0 12px var(--accent-green), 0 0 20px var(--accent-green);
+      z-index: 3;
+      pointer-events: none;
+      animation: scanDown 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes scanDown {
+      0% { top: 0%; opacity: 1; }
+      95% { top: 100%; opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-size: 20px 20px;
+      background-image: 
+        linear-gradient(to right, rgba(16, 185, 129, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(16, 185, 129, 0.12) 1px, transparent 1px);
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .glass-glare {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* ==========================================================================
+       CARDS & VISIBLE CONTENT TEXT
+       ========================================================================== */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .glass-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-green-glow);
+    }
+
+    .tech-tag {
+      font-size: 0.8rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .tech-tag:hover {
+      background: rgba(16, 185, 129, 0.3);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .tech-badge-sm {
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-color);
+      color: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION CARDS
+       ========================================================================== */
+    .info-card {
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .info-card:hover {
+      background: rgba(30, 41, 59, 0.95);
+      border-color: var(--accent-green);
+      transform: translateX(6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-card p {
+      color: #f1f5f9 !important;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .diamond-icon-box {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin: 6px;
+    }
+
+    .diamond-icon-box i {
+      transform: rotate(-45deg);
+      font-size: 1.15rem;
+    }
+
+    .bg-soft-red { background: rgba(239, 68, 68, 0.25); color: #fca5a5 !important; }
+    .bg-soft-yellow { background: rgba(245, 158, 11, 0.25); color: #fde047 !important; }
+    .bg-soft-blue { background: rgba(59, 130, 246, 0.25); color: #93c5fd !important; }
+    .bg-soft-cyan { background: rgba(6, 182, 212, 0.25); color: #67e8f9 !important; }
+    .bg-soft-teal { background: rgba(20, 184, 166, 0.25); color: #5eead4 !important; }
+
+    .about-image-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      min-height: 400px;
+    }
+
+    .image-overlay-title {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      background: rgba(11, 15, 23, 0.85);
+      padding: 6px 16px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Form Inputs */
+    .form-control-dark {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-color);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 12px 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control-dark::placeholder {
+      color: #94a3b8;
+    }
+
+    .form-control-dark:focus {
+      background: rgba(15, 23, 42, 1);
+      border-color: var(--accent-green);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .text-hover-green {
+      transition: all 0.3s ease;
+      color: #cbd5e1 !important;
+    }
+    .text-hover-green:hover {
+      color: var(--accent-green) !important;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .scope-frame {
+        width: 230px;
+        height: 230px;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-top"></div>
+  <div class="bg-glow-center"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold font-monospace text-green-accent" href="#home">
+        &lt;SANTHOSH /&gt;
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-2 text-center py-2 py-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="container py-5 my-md-4">
+    <div class="row align-items-center g-5">
+      
+      <!-- Left Column: Intro -->
+      <div class="col-lg-7 text-center text-lg-start">
+        <div class="status-badge mb-3">
+          <span class="status-dot"></span>
+          <span>AVAILABLE FOR ROLES // JAVA FULL STACK & SOFTWARE DEVELOPER</span>
+        </div>
+        
+        <p class="font-monospace text-muted-custom mb-1">Hello, I'm</p>
+        <h1 class="hero-title mb-2">SANTHOSHKUMAR T</h1>
+        <h2 class="h4 text-green-accent fw-bold mb-3 font-monospace">B.Sc. Computer Science Graduate | Software Developer | Full Stack Developer</h2>
+        
+        <p class="text-sub leading-relaxed mb-4" style="max-width: 600px; font-size: 1.02rem;">
+          To begin my career as a Java Full Stack Developer where I can apply my knowledge of Java, JSP, JDBC, MySQL, HTML, CSS, and JavaScript to develop reliable and user-friendly web applications. I am eager to strengthen my skills in Java-based technologies, contribute to real-world software projects, and grow as a professional software developer.
+        </p>
+
+        <!-- Actions -->
+        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-4">
+          <a href="#projects" class="btn btn-success btn-lg px-4 rounded-pill fw-bold font-monospace shadow-sm">
+            View Projects <i class="fa-solid fa-arrow-down ms-2 fs-6"></i>
+          </a>
+          <a href="Santhosh-Resume.pdf" download="Santhosh-Kumar-Resume.pdf" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold font-monospace">
+            <i class="fa-solid fa-file-arrow-down me-2"></i> Download Resume
+          </a>
+        </div>
+
+        <!-- Contact Quick Links -->
+        <div class="d-flex flex-wrap gap-4 justify-content-center justify-content-lg-start fs-6 font-monospace text-sub">
+          <a href="https://github.com/ssanthosh49077-sys" target="_blank" class="text-hover-green" title="GitHub"><i class="fa-brands fa-github me-1"></i> GitHub</a>
+          <a href="https://linkedin.com" target="_blank" class="text-hover-green" title="LinkedIn"><i class="fa-brands fa-linkedin me-1"></i> LinkedIn</a>
+          <p class="mb-1">
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ssanthosh49077@gmail.com" target="_blank" class="text-hover-green text-decoration-none">
+    <i class="fa-solid fa-envelope me-2 text-green-accent"></i>ssanthosh49077@gmail.com
+  </a>
+</p>
+          <a href="tel:+919342236003" class="text-hover-green" title="Phone"><i class="fa-solid fa-phone me-1"></i> +91 9342236003</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Biometric Scope -->
+      <div class="col-lg-5 d-flex justify-content-center">
+        <div class="scope-frame">
+          <div class="scope-screen">
+            <div class="scan-line"></div>
+            <img src="Santhosh-Photo.jpg" alt="Santhoshkumar T" class="profile-img">
+            <div class="grid-overlay"></div>
+            <div class="glass-glare"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT ME SECTION -->
+  <section id="about" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="h1 fw-bold text-light">
+        <span class="text-green-accent">About</span> Me
+      </h2>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+      <!-- Left Column: Image Card -->
+      <div class="col-lg-5">
+        <div class="about-image-card h-100 position-relative rounded-4 overflow-hidden shadow-sm">
+          <img src="Santhosh-Photo.jpg" alt="Santhoshkumar T" class="w-100 h-100 object-fit-cover">
+          <div class="image-overlay-title font-monospace">Santhoshkumar T</div>
+        </div>
+      </div>
+
+      <!-- Right Column: Info Cards Stack -->
+      <div class="col-lg-7 d-flex flex-column gap-3">
+        
+        <!-- Short Intro Card -->
+        <div class="info-card p-3 p-md-4 d-flex align-items-center gap-3">
+          <div class="diamond-icon-box bg-soft-red">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div>
+            <h3 class="h6 fw-bold text-white mb-1">Professional Summary</h3>
+            <p class="mb-0">
+              Aspiring Java Full Stack Developer and Computer Science graduate with hands-on experience building full-stack web applications using Java, JSP, JDBC, React.js, PHP, and MySQL.
+            </p>
+          </div>
+        </div>
+
+        <!-- Achievements Card -->
+        <div class="info-card p-3 p-md-4 d-flex align-items-center gap-3">
+          <div class="diamond-icon-box bg-soft-yellow">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div>
+            <h3 class="h6 fw-bold text-white mb-1">Key Achievements</h3>
+            <p class="mb-0">
+              Earned Elite Certificate in NPTEL Programming in Java (86/100) and won Consolation Prize in ZYNOVA 2K26 National Level Codathon.
+            </p>
+          </div>
+        </div>
+
+        <!-- Core Skills Card -->
+        <div class="info-card p-3 p-md-4 d-flex align-items-center gap-3">
+          <div class="diamond-icon-box bg-soft-blue">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div>
+            <h3 class="h6 fw-bold text-white mb-1">Core Tech Stack</h3>
+            <p class="mb-0">
+              Java, JavaScript, React.js, PHP, HTML, CSS, MySQL, Node.js, Express.js, and MongoDB.
+            </p>
+          </div>
+        </div>
+
+        <!-- Education Card -->
+        <div class="info-card p-3 p-md-4 d-flex align-items-center gap-3">
+          <div class="diamond-icon-box bg-soft-cyan">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <h3 class="h6 fw-bold text-white mb-1">Education</h3>
+            <p class="mb-0">
+              B.Sc. Computer Science (2023–2026) from V.H.N.S.N. College, Virudhunagar (Madurai Kamaraj University).
+            </p>
+          </div>
+        </div>
+
+        <!-- Tools Card -->
+        <div class="info-card p-3 p-md-4 d-flex align-items-center gap-3">
+          <div class="diamond-icon-box bg-soft-teal">
+            <i class="fa-solid fa-wrench"></i>
+          </div>
+          <div>
+            <h3 class="h6 fw-bold text-white mb-1">Developer Tools</h3>
+            <p class="mb-0">
+              Git, GitHub, VS Code, Apache Tomcat, Postman, Streamlit, and FPDF Report Generator.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="h3 fw-bold font-monospace text-green-accent">// TECHNICAL SKILLS</h2>
+      <p class="text-muted-custom">Technologies and tools I work with</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="glass-card p-4 h-100">
+          <h3 class="h6 font-monospace text-white mb-3"><i class="fa-solid fa-code text-green-accent me-2"></i> Languages</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="glass-card p-4 h-100">
+          <h3 class="h6 font-monospace text-white mb-3"><i class="fa-solid fa-laptop-code text-green-accent me-2"></i> Frontend</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="glass-card p-4 h-100">
+          <h3 class="h6 font-monospace text-white mb-3"><i class="fa-solid fa-server text-green-accent me-2"></i> Backend</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">JSP / JDBC</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express.js</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6">
+        <div class="glass-card p-4 h-100">
+          <h3 class="h6 font-monospace text-white mb-3"><i class="fa-solid fa-database text-green-accent me-2"></i> Databases</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">MongoDB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-6">
+        <div class="glass-card p-4 h-100">
+          <h3 class="h6 font-monospace text-white mb-3"><i class="fa-solid fa-wrench text-green-accent me-2"></i> Tools & Platforms</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">GitHub</span>
+            <span class="tech-tag">Apache Tomcat</span>
+            <span class="tech-tag">Streamlit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="h3 fw-bold font-monospace text-green-accent">// PROJECTS</h2>
+      <p class="text-muted-custom">Academic and personal software projects</p>
+    </div>
+
+    <!-- Featured Project -->
+    <div class="glass-card p-4 p-md-5 mb-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+            <span class="badge bg-success bg-opacity-25 text-success font-monospace border border-success border-opacity-50">FINAL YEAR PROJECT</span>
+            <span class="font-monospace text-muted-custom small">Dec 2025 – Apr 2026</span>
+          </div>
+          <h3 class="h4 fw-bold text-white mb-2">Apartment Management System</h3>
+          <ul class="text-sub mb-3 ps-3" style="font-size: 0.95rem; line-height: 1.6;">
+            <li>Built responsive React.js frontend with component-based architecture and role-based access control for 4 user types.</li>
+            <li>Designed 15+ RESTful APIs using Node.js and Express.js with MongoDB for scalable data management.</li>
+            <li>Integrated payment module and automated email notifications managing data for 50+ tenants.</li>
+          </ul>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="tech-badge-sm">React.js</span>
+            <span class="tech-badge-sm">Node.js</span>
+            <span class="tech-badge-sm">Express.js</span>
+            <span class="tech-badge-sm">MongoDB</span>
+          </div>
+          <div>
+            <a href="https://github.com/ssanthosh49077-sys/apartment-management" target="_blank" class="btn btn-outline-success btn-sm font-monospace">
+              <i class="fa-brands fa-github me-1"></i> GitHub Repository
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="p-4 rounded-3 bg-dark border border-secondary border-opacity-50">
+            <i class="fa-solid fa-building-user text-green-accent display-3 mb-2"></i>
+            <p class="font-monospace text-sub mb-0">MERN Architecture</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="row g-4">
+      
+      <!-- Task Manager Application -->
+      <div class="col-md-6 col-lg-4">
+        <div class="glass-card p-4 h-100 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge bg-secondary bg-opacity-25 text-light font-monospace">PRE-FINAL YEAR</span>
+            <span class="font-monospace text-muted-custom small">2024 – 2025</span>
+          </div>
+          <h4 class="h5 fw-bold text-white mb-2">Task Manager Application</h4>
+          <ul class="text-sub flex-grow-1 ps-3 mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+            <li>Developed role-based Employee Task Management System using JSP, JDBC, MySQL, and Apache Tomcat.</li>
+            <li>Implemented Admin & Employee login with session-based authentication.</li>
+            <li>Built employee management, task assignment, task tracking, and progress update modules.</li>
+            <li>Designed responsive dashboard and performed CRUD operations using JDBC & MySQL.</li>
+          </ul>
+          <div class="d-flex flex-wrap gap-1 mb-3">
+            <span class="tech-badge-sm">JSP</span>
+            <span class="tech-badge-sm">JDBC</span>
+            <span class="tech-badge-sm">MySQL</span>
+            <span class="tech-badge-sm">Apache Tomcat</span>
+          </div>
+          <div>
+            <a href="https://github.com/ssanthosh49077-sys/TaskManager" target="_blank" class="btn btn-sm btn-outline-light font-monospace">
+              <i class="fa-brands fa-github me-1"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather Prediction System -->
+      <div class="col-md-6 col-lg-4">
+        <div class="glass-card p-4 h-100 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge bg-secondary bg-opacity-25 text-light font-monospace">MINI PROJECT</span>
+            <span class="font-monospace text-muted-custom small">2024</span>
+          </div>
+          <h4 class="h5 fw-bold text-white mb-2">Weather Prediction System</h4>
+          <ul class="text-sub flex-grow-1 ps-3 mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+            <li>Trained a machine learning classification model in Python for predicting weather patterns across multiple categories.</li>
+            <li>Deployed as a publicly accessible live web app using Streamlit for real-time predictions.</li>
+            <li>Performed data preprocessing, feature engineering, and model evaluation to optimize prediction accuracy.</li>
+          </ul>
+          <div class="d-flex flex-wrap gap-1 mb-3">
+            <span class="tech-badge-sm">Python</span>
+            <span class="tech-badge-sm">Machine Learning</span>
+            <span class="tech-badge-sm">Streamlit</span>
+          </div>
+          <div>
+            <a href="https://machinelearning5.streamlit.app" target="_blank" class="btn btn-sm btn-outline-light font-monospace">
+              Live Demo <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Library Management System -->
+      <div class="col-md-6 col-lg-4">
+        <div class="glass-card p-4 h-100 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge bg-secondary bg-opacity-25 text-light font-monospace">WEB PROJECT</span>
+          </div>
+          <h4 class="h5 fw-bold text-white mb-2">Library Management System</h4>
+          <ul class="text-sub flex-grow-1 ps-3 mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+            <li>Designed and developed web-based system using PHP, MySQL, Bootstrap, HTML, CSS, and JavaScript.</li>
+            <li>Implemented secure Admin and Student authentication with role-based access.</li>
+            <li>Built CRUD operations for managing books and students, including Edit, Soft Delete, Restore, and Permanent Delete.</li>
+            <li>Developed book issue/return with automatic inventory updates, tracking, and PDF reports via FPDF.</li>
+          </ul>
+          <div class="d-flex flex-wrap gap-1 mb-3">
+            <span class="tech-badge-sm">PHP</span>
+            <span class="tech-badge-sm">MySQL</span>
+            <span class="tech-badge-sm">Bootstrap</span>
+            <span class="tech-badge-sm">FPDF</span>
+          </div>
+          <div>
+            <a href="https://github.com/ssanthosh49077-sys/Library_Management" target="_blank" class="btn btn-sm btn-outline-light font-monospace">
+              <i class="fa-brands fa-github me-1"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="h3 fw-bold font-monospace text-green-accent">// EDUCATION</h2>
+      <p class="text-muted-custom">Academic qualifications</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+          <div class="border-start border-success border-3 ps-3">
+            <span class="font-monospace text-green-accent fw-bold small">2023 – 2026</span>
+            <h3 class="h5 fw-bold text-white mb-1">B.Sc. Computer Science</h3>
+            <p class="text-sub fw-semibold mb-2">V.H.N.S.N. College, Virudhunagar</p>
+            <p class="text-sub mb-0" style="font-size: 0.95rem;">Affiliated with Madurai Kamaraj University.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+          <div class="border-start border-success border-3 ps-3">
+            <span class="font-monospace text-green-accent fw-bold small">MARCH 2023</span>
+            <h3 class="h5 fw-bold text-white mb-1">HSC – 12th Standard</h3>
+            <p class="text-sub fw-semibold mb-2">Govt. Higher Secondary School, Soolakkarai</p>
+            <p class="text-sub mb-0" style="font-size: 0.95rem;">Tamil Nadu State Board | <strong class="text-white">Score: 78.17%</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- CERTIFICATIONS & ACHIEVEMENTS SECTION -->
+  <section id="certifications" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="h3 fw-bold font-monospace text-green-accent">// CERTIFICATIONS & ACHIEVEMENTS</h2>
+      <p class="text-muted-custom">Recognitions and technical certifications</p>
+    </div>
+
+    <div class="glass-card p-4 p-md-5">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <ul class="text-sub list-unstyled d-flex flex-column gap-3 mb-0" style="font-size: 0.95rem;">
+            <!-- Newly Added Certification -->
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-headset text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">IT Technical Support Associate</strong><br>
+                Vetri Nichayam / TN Skill Corporation & UpGrad Education<br>
+                <span class="small text-muted-custom">390 Hours | Grade B+ | August 2026</span>
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-award text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">Programming in Java – NPTEL</strong><br>
+                Elite Certificate | Score: 86/100 | <a href="https://nptel.ac.in" target="_blank" class="text-green-accent">Verify: nptel.ac.in</a>
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-certificate text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">IBM SkillsBuild – Data Analytics</strong><br>
+                Grade A | ICT Academy (2025)
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-certificate text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">AI & ML Webinar</strong><br>
+                30 Hours Completion Certificate (2025)
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-microchip text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">IoT Hands-on Workshop</strong><br>
+                DIGITECH Forum (2026)
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <ul class="text-sub list-unstyled d-flex flex-column gap-3 mb-0" style="font-size: 0.95rem;">
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-keyboard text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">English Typewriting – Senior Grade</strong><br>
+                Second Class
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-network-wired text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">Workshop on Network Simulation</strong><br>
+                V.H.N.S.N. College (2025)
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-trophy text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">National Level Codathon – ZYNOVA 2K26</strong><br>
+                Consolation Prize winner
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-users text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">Technical Symposiums</strong><br>
+                State & National Level Technical Symposium Participant
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+              <i class="fa-solid fa-keyboard text-green-accent mt-1"></i>
+              <div>
+                <strong class="text-white">English Typewriting – Junior Grade</strong><br>
+                First Class with Distinction
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME SECTION -->
+  <section id="resume" class="container py-5">
+    <div class="glass-card p-4 p-md-5 text-center mx-auto" style="max-width: 700px;">
+      <h2 class="h3 fw-bold font-monospace text-green-accent mb-2">// RESUME</h2>
+      <p class="text-sub mb-4">View or download my full technical curriculum vitae</p>
+      
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="Santhosh-Resume.pdf" target="_blank" class="btn btn-success font-monospace px-4">
+          <i class="fa-solid fa-eye me-2"></i> View Resume
+        </a>
+        <a href="Santhosh-Resume.pdf" download="Santhosh-Kumar-Resume.pdf" class="btn btn-outline-light font-monospace px-4">
+          <i class="fa-solid fa-download me-2"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+<!-- CONTACT SECTION -->
+  <section id="contact" class="container py-5">
+    <div class="glass-card p-4 p-md-5 mx-auto" style="max-width: 700px;">
+      <div class="text-center mb-4">
+        <h2 class="h3 fw-bold font-monospace text-green-accent">// GET IN TOUCH</h2>
+        <p class="text-sub">Have a question or want to work together? Send a message!</p>
+      </div>
+
+      <!-- Active Formspree Integration -->
+      <form action="https://formspree.io/f/maeyqanj" method="POST" class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label text-sub font-monospace fw-bold small">YOUR NAME</label>
+          <input type="text" name="name" class="form-control form-control-dark" placeholder="John Doe" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-sub font-monospace fw-bold small">YOUR EMAIL</label>
+          <input type="email" name="email" class="form-control form-control-dark" placeholder="john@example.com" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label text-sub font-monospace fw-bold small">MESSAGE</label>
+          <textarea name="message" class="form-control form-control-dark" rows="4" placeholder="Your message..." required></textarea>
+        </div>
+        <div class="col-12 text-center pt-2">
+          <button type="submit" class="btn btn-success font-monospace w-100 py-2 fw-bold">
+            Send Message <i class="fa-solid fa-paper-plane ms-2"></i>
+          </button>
+        </div>
+      </form>
+
+      <hr class="border-secondary border-opacity-50 my-4">
+
+      <div class="text-center font-monospace text-sub small">
+        <p class="mb-1"><a href="mailto:ssanthosh49077@gmail.com" class="text-hover-green text-decoration-none"><i class="fa-solid fa-envelope me-2 text-green-accent"></i>ssanthosh49077@gmail.com</a></p>
+        <p class="mb-1"><a href="tel:+919342236003" class="text-hover-green text-decoration-none"><i class="fa-solid fa-phone me-2 text-green-accent"></i>+91 9342236003</a></p>
+        <p class="mb-0"><i class="fa-solid fa-location-dot me-2 text-green-accent"></i>Tamil Nadu, India</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4 border-top border-secondary border-opacity-25 mt-5">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-sub small font-monospace">
+      <div>
+        <strong class="text-white">Created by SANTHOSHKUMAR T</strong>
+      </div>
+      <div>
+        © 2026. All rights reserved.
+      </div>
+      <div class="d-flex gap-3">
+        <a href="https://github.com/ssanthosh49077-sys" target="_blank" class="text-hover-green"><i class="fa-brands fa-github"></i></a>
+        <p class="mb-1">
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ssanthosh49077@gmail.com" target="_blank" class="text-hover-green text-decoration-none">
+    <i class="fa-solid fa-envelope me-2 text-green-accent"></i>ssanthosh49077@gmail.com
+  </a>
+</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Navigation Active State Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('section');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          if (pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
